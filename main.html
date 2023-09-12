@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 15</title>
+    <link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body background="./images/main.jpg"; style="background-size:cover">
+  
+  <div class="container">
+    <h1 class="text-center" style="color:rgb(216, 65, 65)"><span>&#8499;&#436; &#506;<i class="bi bi-airplane"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
+      <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z"/>
+    </svg></i>&#638;</span>&nbsp</h1>
+
+    <!-- Registration Form -->
+    <form id="registrationForm" class="form-group">
+      <div id="form">
+        <h3 class="text-white">Registration</h3>
+        <div id="input">
+            <input type="text" id="first_name" placeholder="First Name">
+            <input type="text" id="last_name" placeholder="Last Name">
+            <input type="email" id="email" placeholder="Email-id">
+        </div>
+        <div id="input2">
+            <input type="number" id="phone" placeholder="Contact">
+            <input type="number" id="age" placeholder="Age">
+        </div>
+        <div id="input3">
+            <span id="input-group" class="text-primary">Gender</span> 
+            <input type="radio" id="input-group" name="gender" value="Male">
+            <label class="text-white" for="input-group">Male</label>
+            <input type="radio" id="input-group" name="gender" value="Female">
+            <label class="text-white" for="input-group">Female</label>
+        </div>
+        <div id="input6">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <button type="button" onclick="register()" class="btn btn-primary"> Register</button>
+        <button type="reset" class="btn btn-primary">Clear</button>
+        <button type="button" onclick="showLoginForm()" class="btn btn-link">Switch to Login</button>
+      </div>
+    </form>
+
+   <!-- Login Form -->
+<form id="loginForm" class="form-group" style="display: none;">
+  <div id="form">
+    <h3 class="text-white">Login</h3>
+    <div id="input">
+        <input type="email" id="login_email" placeholder="Email-id">
+    </div>
+    <div id="input6">
+        <input type="password" id="login_password" placeholder="Password">
+    </div>
+    <button type="button" onclick="login()" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login</button>
+    <button type="reset" class="btn btn-primary">Clear</button>
+    <button type="button" onclick="showRegistrationForm()" class="btn btn-link">Switch to Registration</button>
+  </div>
+</form>
+
+<!-- Display User Data Section -->
+<div id="userDataSection" style="display: none;">
+  <h2 class="text-white" style="background-color:blue ;">User Profile
+    <button type="button" onclick="logout()" class="btn btn-danger" style="float:right">Logout</button></h2>
+  <div id="Data" class="mt-4" style="color: blue;"></div>
+  <i class="fa fa-key" style="font-size:24px;color:goldenrod"></i>
+  <button type="button" onclick="showUpdateForm()" class="btn btn-link">Change Password</button>
+  <div>
+  <a href="flights.html" style="color:red" >Click here to search for flights</a>
+  </div>
+  </div>
+  
+
+<!--Update Password-->
+<form id="updateForm" class="form-group" style="display: none;">
+  <div class="form-group">
+    <label for="chPhone">Phone:</label>
+    <input type="text" name="txtCID" id="chPhone" class="form-control">
+    <label style="color:red"><i>(For Security reasons)</i></label>
+  </div>
+  <div class="form-group">
+    <label for="newPassword">New Password:</label>
+    <input type="text" name="txtPhone" id="newPassword" class="form-control">
+  </div>
+  <button type="button" onclick="updateRecord()" class="btn btn-primary"><i class="fas fa-sync"></i> Change</button>
+</form>
+
+
+  <script>
+    function register() {
+      const first_name = document.getElementById('first_name').value;
+      const last_name = document.getElementById('last_name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const age = document.getElementById('age').value;
+      const password = document.getElementById('password').value;
+      
+      let gender;
+      const genderRadios = document.getElementsByName('gender');
+      for (let i = 0; i < genderRadios.length; i++) {
+        if (genderRadios[i].checked) {
+          gender = genderRadios[i].value;
+          break;
+        }
+      }
+
+      const data = {
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        gender: gender,
+        phone: phone,
+        age: age,
+        password: password
+      };
+
+      fetch("http://localhost:3000/create", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(result => {
+          console.log(result);
+          alert(result);
+        })
+        .catch(error => console.log('error', error));
+    }
+    function login() {
+    const login_email = document.getElementById('login_email').value;
+    const login_password = document.getElementById('login_password').value;
+    const data = {
+      email: login_email,
+      password: login_password
+    };
+
+    fetch("http://localhost:3000/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Parse the response as JSON
+        
+      } else {
+        throw new Error('Login failed. Invalid email or password.');
+      }
+    })
+    .then(userProfile => {
+      document.body.style.background = "#f2f2f2";
+      console.log(userProfile);
+      // Hide the login form
+      document.getElementById('loginForm').style.display = 'none';
+      
+      // Show the user data section
+      document.getElementById('userDataSection').style.display = 'block';
+      
+      // Display the user profile data
+      const Data = document.getElementById("Data");
+      Data.innerHTML = `
+      <p><strong>First Name:</strong> ${userProfile.first_name}</p>
+      <p><strong>Last Name:</strong> ${userProfile.last_name}</p>
+      <p><strong>Gender:</strong> ${userProfile.gender}</p>
+      <p><strong>Email:</strong> ${userProfile.email}</p>
+      <p><strong>Age:</strong> ${userProfile.age}</p>
+      <div id="userImage">
+        <img src="./images/user.jpg" alt="User" width="150px" height="150px">
+      </div>
+      <hr>
+    `;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert(error.message);
+    });
+    
+  }
+
+  function logout() {
+    document.body.style.background="url(./images/main.jpg)"
+    document.body.style.backgroundSize="cover"
+    // Hide the user data section
+    document.getElementById('userDataSection').style.display = 'none';
+
+    // Clear the data displayed
+    document.getElementById("Data").innerHTML = "";
+
+    // Reset the login form
+    document.getElementById('loginForm').reset();
+    
+    // Show the registration form
+    document.getElementById('registrationForm').style.display = 'block';
+
+    document.getElementById('updateForm').style.display = 'none';
+  }
+
+  function updateRecord() {
+      const phone = document.getElementById('chPhone').value;
+      const password = document.getElementById('newPassword').value;
+
+      const data = {
+        phone:phone,
+        password: password
+        
+      };
+
+      fetch("http://localhost:3000/update", {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(result => {
+          alert(result)
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    
+    function showLoginForm() {
+        document.getElementById('registrationForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+    }
+
+    function showRegistrationForm() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registrationForm').style.display = 'block';
+    }
+
+    function showUpdateForm() {
+        document.getElementById('updateForm').style.display = 'block';
+    }
+    
+  </script>
+</body>
+</html>
