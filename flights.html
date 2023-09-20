@@ -12,7 +12,6 @@
 </head>
 
 <body background="./images/flights.jpg"; style="background-size:cover">
-
   <!--Heading/Moto-->
 	<div class="container">
 		<div class="row">
@@ -57,14 +56,12 @@
           <span class="lab">Departure:</span>
           <input type="date" name="depart" class="drop" id="depart">
           <span class="lab">Return:</span>
-          <input type="date" name="return" class="drop" id="return">
-          
+          <input type="date" name="return" class="drop" id="return">        
           <input type="submit" name="submit" id="flightsButton">
         </form>
       </div>
       <!--Tab Content Flight End-->
-
-    
+  
     </div>
     <!--Tab Contents End-->
   </div>
@@ -103,12 +100,19 @@
             data.forEach((flight) => {
               const flightInfo = document.createElement("div");
               flightInfo.innerHTML = `
+              <hr>
+              <div class="col-lg-8">
                 <p>Flight Name: ${flight.flightName}</p>
                 <p>Origin: ${flight.origin}</p>
                 <p>Destination: ${flight.destination}</p>
                 <p>Departure: ${flight.departure}</p>
                 <p>Return: ${flight.return}</p>
-                <hr>
+                <a href="seat_selection.html" target="_blank"><button class="btn btn-success">Book Now</button></a><br><br><hr><br><br>
+              </div>
+              <div class="col-lg-4">
+                <img src="images/airplane.jpg" alt="Flight Image" height="150px" style="border-radius:10%">
+                <br><br>
+              </div>
               `;
               resultContainer.appendChild(flightInfo);
             });

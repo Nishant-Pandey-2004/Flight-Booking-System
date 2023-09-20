@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "64bac050c6a682bd1e5174ee"
+  },
+  "flightName": "Flight 001",
+  "origin": "Mumbai",
+  "destination": "Delhi",
+  "departure": "2023-07-25",
+  "return": "2023-07-30"
+},
+{
+  "_id": {
+    "$oid": "64bac050c6a682bd1e5174ef"
+  },
+  "flightName": "Flight 002",
+  "origin": "Delhi",
+  "destination": "Mumbai",
+  "departure": "2023-08-01",
+  "return": "2023-08-05"
+},
+{
+  "_id": {
+    "$oid": "64bac050c6a682bd1e5174f0"
+  },
+  "flightName": "Flight 003",
+  "origin": "Bangalore",
+  "destination": "Kolkata",
+  "departure": "2023-08-10",
+  "return": "2023-08-15"
+},
+{
+  "_id": {
+    "$oid": "64bac050c6a682bd1e5174f1"
+  },
+  "flightName": "Flight 004",
+  "origin": "Kolkata",
+  "destination": "Bangalore",
+  "departure": "2023-08-20",
+  "return": "2023-08-25"
+},
+{
+  "_id": {
+    "$oid": "64bb63383f0d7075c5824cbd"
+  },
+  "flightName": "Flight 005",
+  "origin": "Bangalore",
+  "destination": "Kolkata",
+  "departure": "2023-08-10",
+  "return": "2023-08-15"
+}]

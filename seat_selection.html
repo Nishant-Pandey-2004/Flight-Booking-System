@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Ticket Booking</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/movie-favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Ubuntu');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        body {
+            background: #1ed446;
+            margin: 0 10px;
+        }
+
+        .payment {
+            background: #f8f8f8;
+            max-width: 360px;
+            margin: 80px auto;
+            height: auto;
+            padding: 35px;
+            padding-top: 70px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .payment h2 {
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: #0d3c61;
+        }
+
+        .form .label {
+            display: block;
+            color: #555555;
+            margin-bottom: 6px;
+        }
+
+        .input {
+            padding: 13px 0px 13px 25px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid #dddddd;
+            border-radius: 5px;
+            letter-spacing: 1px;
+            word-spacing: 3px;
+            outline: none;
+            font-size: 16px;
+            color: #555555;
+        }
+
+        .card-grp {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-item {
+            width: 48%;
+        }
+
+        .space {
+            margin-bottom: 20px;
+        }
+
+        .icon-relative {
+            position: relative;
+        }
+
+        .icon-relative .fas,
+        .icon-relative .far {
+            position: absolute;
+            bottom: 12px;
+            left: 15px;
+            font-size: 20px;
+            color: #555555;
+        }
+
+        .btn {
+            margin-top: 40px;
+            background: #1ed446;
+            padding: 12px;
+            text-align: center;
+            color: #f8f8f8;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .payment-logo {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            line-height: 85px;
+        }
+
+        .payment-logo:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 90px;
+            height: 90px;
+            background: #cc7c14;
+            border-radius: 50%;
+        }
+
+        .payment-logo p {
+            position: relative;
+            color: #f8f8f8;
+            font-family: 'Baloo Bhaijaan', cursive;
+            font-size: 58px;
+        }
+
+
+        @media screen and (max-width: 420px) {
+            .card-grp {
+                flex-direction: column;
+            }
+
+            .card-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .btn {
+                margin-top: 20px;
+            }
+        }
+
+        :root {
+            --grey-outer: #0f181f;
+            --grey-inner: #a4b6b7;
+            --selected-clr: #1ed446;
+            --sold-clr: #ef3c3c;
+            --screen-clr: #d9e6fb;
+            --white-clr: #ffffff;
+            --max-width: 1140px;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--grey-outer);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        select {
+            border: none;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: var(--grey-inner);
+            text-align: center;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            width: 500px;
+        }
+
+        .movie-container {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        select {
+            border-radius: 8px;
+            width: 8rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        option {
+            text-align: left;
+        }
+
+        .seat {
+            background-color: var(--white-clr);
+            background-image: url(../assets/images/seat-icon.png);
+            background-size: cover;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 2px 2px rgb(119, 114, 114);
+        }
+
+        .seat.sold {
+            background-color: var(--sold-clr);
+        }
+
+        .seat.selected {
+            background-color: var(--selected-clr);
+        }
+
+        .showcase-container li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .seating-container .seat:hover {
+            cursor: pointer;
+        }
+
+        .seating-container .seat.sold:hover {
+            cursor: default;
+            background-color: var(--sold-clr);
+        }
+
+        .showcase-container {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .seating-container {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .screen {
+            margin-bottom: 45px;
+            background-color: rgba(65, 61, 61, 0.852);
+            width: 200px;
+            height: 20px;
+            color: white;
+            transform: rotateX(-45deg);
+
+        }
+
+        .row {
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+        }
+
+        .seat:nth-last-of-type(3) {
+            margin-left: 1.5rem;
+        }
+
+        .summary {
+            margin-top: 40px;
+        }
+
+        @media screen and (max-width: 375px) {
+            .container {
+                width: 25rem;
+            }
+
+            .showcase-container li {
+                margin-right: 1rem;
+            }
+
+            .row {
+                column-gap: 25px;
+            }
+
+            .summary {
+                text-align: justify;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container col-lg-6">
+        <div class="container">
+            <div class="movie-container">
+                <label for="movie">Select seat</label><br>
+                <select name="movie" id="movie">
+                    <option value="2000"> Business Class</option>
+                    <option value="1500"> Economy Class</option>
+
+                </select>
+            </div>
+            <ul class="showcase-container">
+                <li>
+                    <div class="seat sold"></div>
+                    <small>Sold</small>
+                </li>
+                <li>
+                    <div class="seat available"></div>
+                    <small>Available</small>
+                </li>
+                <li>
+                    <div class="seat selected"></div>
+                    <small>Selected</small>
+                </li>
+            </ul>
+            <div class="seating-container">
+                <div class="screen">Pilot Deck</div>
+                <div class="row">
+                    <div class="seat ">W</div>
+                    <div class="seat ">M</div>
+                    <div class="seat ">A</div>
+                    <div class="seat sold">A</div>
+                    <div class="seat">M</div>
+                    <div class="seat">W</div>
+                </div>
+                <div class="row">
+                    <div class="seat">W</div>
+                    <div class="seat">M</div>
+                    <div class="seat">A</div>
+                    <div class="seat">A</div>
+                    <div class="seat sold">M</div>
+                    <div class="seat">W</div>
+
+                </div>
+                <div class="row">
+                    <div class="seat">W</div>
+                    <div class="seat">M</div>
+                    <div class="seat">A</div>
+                    <div class="seat">A</div>
+                    <div class="seat">M</div>
+                    <div class="seat">W</div>
+
+                </div>
+                <div class="row">
+                    <div class="seat">W</div>
+                    <div class="seat">M</div>
+                    <div class="seat sold">A</div>
+                    <div class="seat">A</div>
+                    <div class="seat">M</div>
+                    <div class="seat ">W</div>
+
+                </div>
+                <div class="row">
+                    <div class="seat sold">W</div>
+                    <div class="seat">M</div>
+                    <div class="seat">A</div>
+                    <div class="seat">A</div>
+                    <div class="seat">M</div>
+                    <div class="seat sold">W</div>
+
+                </div>
+                <div class="row">
+                    <div class="seat sold">W</div>
+                    <div class="seat">M</div>
+                    <div class="seat">A</div>
+                    <div class="seat">A</div>
+                    <div class="seat">M</div>
+                    <div class="seat sold">W</div>
+
+                </div>
+                <div class="row">
+                    <div class="seat">W</div>
+                    <div class="seat">M</div>
+                    <div class="seat">A</div>
+                    <div class="seat">A</div>
+                    <div class="seat">M</div>
+                    <div class="seat sold">W</div>
+
+                </div>
+                <div class="summary">
+                    <p>You have selected <span class="bold" id="count">0</span> seats, total price is ₹<span
+                            class="bold" id="total">0</span> </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6" style="padding-left: 50px; padding-top: 35px;">
+            <div class="wrapper">
+                <div class="payment">
+                    <div class="payment-logo">
+                        <p ><i class="fa-regular fa-credit-card fa-beat-fade" style="margin-top: 20px;"></i></p>
+                    </div>
+
+                    <h2>Payment Gateway</h2>
+                    <div class="form">
+                        <div class="card space icon-relative">
+                            <label class="label">Card holder:</label>
+                            <input type="text" class="input" placeholder="Enter your Name">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="card space icon-relative">
+                            <label class="label">Card number:</label>
+                            <input type="text" class="input" data-mask="0000 0000 0000 0000" placeholder="Card Number">
+                            <i class="far fa-credit-card"></i>
+                        </div>
+                        <div class="card-grp space">
+                            <div class="card-item icon-relative">
+                                <label class="label">Expiry date:</label>
+                                <input type="text" name="expiry-data" class="input" data-mask="00 / 00"
+                                    placeholder="00 / 00">
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                            <div class="card-item icon-relative">
+                                <label class="label">CVC:</label>
+                                <input type="text" class="input" data-mask="000" placeholder="000">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        <a href="success.html" style="color: white;">
+                            <div class="btn">
+                                Pay
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            `use strict`;
+            const movieEl = document.getElementById(`movie`);
+            const seatContainerEl = document.querySelector(`.seating-container`);
+            const countEl = document.getElementById(`count`);
+            const totalEl = document.getElementById(`total`);
+            let seatCount = 0;
+            let ticketPrice = Number(movieEl.value);
+
+            const totalPrice = function () {
+                ticketPrice = Number(movieEl.value);
+                countEl.textContent = seatCount;
+                totalEl.innerText = seatCount * ticketPrice;
+
+            };
+
+            movieEl.addEventListener(`change`, function () {
+                ticketPrice = Number(movieEl.value);
+                totalPrice();
+            });
+            seatContainerEl.addEventListener(`click`, function (e) {
+                if (e.target.classList.contains(`seat`)) {
+                    if (!e.target.classList.contains(`sold`)) {
+                        e.target.classList.toggle(`selected`);
+                        const selectedSeatEl = document.querySelectorAll(`.row .seat.selected`);
+                        seatCount = selectedSeatEl.length;
+                        totalPrice();
+                    }
+                }
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "64b5746cd0e4f7a3324392a7"
+  },
+  "first_name": "Nishant",
+  "last_name": "Pandey",
+  "email": "nishant@example.com",
+  "gender": "Male",
+  "phone": "8928568504",
+  "age": 19,
+  "password": "IT05"
+},
+{
+  "_id": {
+    "$oid": "64b950d747cfa382bcfe2618"
+  },
+  "first_name": "Anand",
+  "last_name": "Pandey",
+  "email": "anand@example.com",
+  "gender": "Male",
+  "phone": "9082668373",
+  "age": "19",
+  "password": "IT04"
+},
+{
+  "_id": {
+    "$oid": "64b9512247cfa382bcfe2619"
+  },
+  "first_name": "Nilesh",
+  "last_name": "Pal",
+  "email": "nilesh@example.com",
+  "gender": "Male",
+  "phone": "7620924661",
+  "age": "20",
+  "password": "IT01"
+},
+{
+  "_id": {
+    "$oid": "64b9517547cfa382bcfe261a"
+  },
+  "first_name": "Karan",
+  "last_name": "Panda",
+  "email": "karan@example.com",
+  "gender": "Male",
+  "phone": "7715067060",
+  "age": "20",
+  "password": "IT03"
+},
+{
+  "_id": {
+    "$oid": "64ba38b69d7232446a54093a"
+  },
+  "first_name": "Aditya",
+  "last_name": "Palande",
+  "email": "aditya@example.com",
+  "gender": "Male",
+  "phone": "8766767381",
+  "age": "20",
+  "password": "IT02"
+}]
