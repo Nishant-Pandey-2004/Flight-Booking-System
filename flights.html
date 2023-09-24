@@ -1,79 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Group 15</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <title>Group 15</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Pacifico|Paytone+One" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="GDC-HomeCSSnew.css">
+  <link rel="stylesheet" type="text/css" href="GDC-HomeCSSnew.css">
 </head>
 
-<body background="./images/flights.jpg"; style="background-size:cover">
-  <!--Heading/Moto-->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div id="content">
-					<h1>Your  Experience  Starts  Here!</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-  <!--Heading/Moto End-->
+<body background="./images/flights.jpg" ; style="background-size:cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="content">
+          <h1>Your Experience Starts Here!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!--Tabs-->
-	<div class="container" id="second">
-    <!--Tabs Headings-->
+  <div class="container" id="second">
     <ul class="nav nav-tabs">
-      <li class="active"><a class="tabshead" data-toggle="tab" href="#home"><i class="fas fa-plane"></i> Flights</a></li>
+      <li class="active"><a class="tabshead" data-toggle="tab" href="#home"><i class="fas fa-plane"></i> Flights</a>
+      </li>
     </ul>
-    <!--Tabs Headings End-->
 
-    <!--Tabs Content-->
     <div class="tab-content">
-      <!--Tab Content Flight-->
       <div id="home" class="tab-pane fade in active">
         <h3 class="lab">Flights</h3>
-        <form > 
+        <form>
           <select name="origin" class="drop" id="ori">
-        	 <option value="Origin">Origin</option>
-        	 <option value="Mumbai">MUMBAI</option>
-        	 <option value="Delhi">DELHI</option>
-        	 <option value="Bangalore">BANGALORE</option>
-        	 <option value="Kolkata">KOLKATA</option>
+            <option value="Origin">Origin</option>
+            <option value="Mumbai">MUMBAI</option>
+            <option value="Delhi">DELHI</option>
+            <option value="Bangalore">BANGALORE</option>
+            <option value="Kolkata">KOLKATA</option>
           </select>
           <i class="fas fa-exchange-alt"></i>
           <select name="destination" class="drop" id="dest">
-          	<option value="Destination">Destination</option>
-          	<option value="Mumbai">MUMBAI</option>
-          	<option value="Delhi">DELHI</option>
-          	<option value="Bangalore">BANGALORE</option>
-          	<option value="Kolkata">KOLKATA</option>
+            <option value="Destination">Destination</option>
+            <option value="Mumbai">MUMBAI</option>
+            <option value="Delhi">DELHI</option>
+            <option value="Bangalore">BANGALORE</option>
+            <option value="Kolkata">KOLKATA</option>
           </select>
           <span class="lab">Departure:</span>
           <input type="date" name="depart" class="drop" id="depart">
           <span class="lab">Return:</span>
-          <input type="date" name="return" class="drop" id="return">        
+          <input type="date" name="return" class="drop" id="return">
           <input type="submit" name="submit" id="flightsButton">
         </form>
       </div>
-      <!--Tab Content Flight End-->
-  
+
     </div>
-    <!--Tab Contents End-->
   </div>
-  <!--Tabs End-->
-  
+
   <div class="container" id="flightResult">
     <h3>Flight Search Result</h3>
     <div id="resultContainer"></div>
   </div>
 
   <script>
-    // JavaScript code to handle form submission
     document.getElementById("flightsButton").addEventListener("click", function (event) {
       event.preventDefault();
       const form = document.querySelector("form");
@@ -92,35 +87,45 @@
       })
         .then((response) => response.json())
         .then((data) => {
-          // Handle the response data and populate the resultContainer
           const resultContainer = document.getElementById("resultContainer");
-          resultContainer.innerHTML = ""; // Clear previous results
+          resultContainer.innerHTML = ""; 
 
           if (data.length > 0) {
-            data.forEach((flight) => {
+            data.forEach((flight, index) => {
               const flightInfo = document.createElement("div");
               flightInfo.innerHTML = `
-              <hr>
-              <div class="col-lg-8">
-                <p>Flight Name: ${flight.flightName}</p>
-                <p>Origin: ${flight.origin}</p>
-                <p>Destination: ${flight.destination}</p>
-                <p>Departure: ${flight.departure}</p>
-                <p>Return: ${flight.return}</p>
-                <a href="seat_selection.html" target="_blank"><button class="btn btn-success">Book Now</button></a><br><br><hr><br><br>
-              </div>
-              <div class="col-lg-4">
-                <img src="images/airplane.jpg" alt="Flight Image" height="150px" style="border-radius:10%">
-                <br><br>
-              </div>
+                <hr>
+                <div class="col-lg-8">
+                  <p>Flight Name: ${flight.flightName}</p>
+                  <p>Origin: ${flight.origin}</p>
+                  <p>Destination: ${flight.destination}</p>
+                  <p>Departure: ${flight.departure}</p>
+                  <p>Return: ${flight.return}</p>
+                  <button class="btn btn-success book-now-button" data-index="${index}">Book Now</button>
+                  <br><br><hr><br><br>
+                </div>
+                <div class="col-lg-4">
+                  <img src="images/airplane.jpg" alt="Flight Image" height="150px" style="border-radius:10%">
+                  <br><br>
+                </div>
               `;
               resultContainer.appendChild(flightInfo);
+            });
+
+            const bookNowButtons = document.querySelectorAll(".book-now-button");
+            bookNowButtons.forEach((button) => {
+              button.addEventListener("click", function (event) {
+                event.preventDefault();
+                const flightIndex = this.getAttribute("data-index");
+                const selectedFlight = data[flightIndex];
+                localStorage.setItem("selectedFlight", JSON.stringify(selectedFlight));
+                window.location.href = "seat_selection.html";
+              });
             });
           } else {
             const noResult = document.createElement("p");
             noResult.textContent = "No flights found for the given criteria.";
             resultContainer.appendChild(noResult);
-            
           }
         })
         .catch((error) => {
@@ -129,6 +134,7 @@
         });
     });
   </script>
- 
+
 </body>
+
 </html>

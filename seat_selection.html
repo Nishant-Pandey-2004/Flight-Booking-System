@@ -455,30 +455,40 @@
             </div>
         </div>
         <script>
-            `use strict`;
-            const movieEl = document.getElementById(`movie`);
-            const seatContainerEl = document.querySelector(`.seating-container`);
-            const countEl = document.getElementById(`count`);
-            const totalEl = document.getElementById(`total`);
+            'use strict';
+            const movieEl = document.getElementById('movie');
+            const seatContainerEl = document.querySelector('.seating-container');
+            const countEl = document.getElementById('count');
+            const totalEl = document.getElementById('total');
             let seatCount = 0;
             let ticketPrice = Number(movieEl.value);
-
+        
             const totalPrice = function () {
                 ticketPrice = Number(movieEl.value);
                 countEl.textContent = seatCount;
                 totalEl.innerText = seatCount * ticketPrice;
-
+                localStorage.setItem('numberOfTickets', seatCount);
+                localStorage.setItem('totalPrice', seatCount * ticketPrice);
             };
-
-            movieEl.addEventListener(`change`, function () {
+        
+            // Retrieve stored data if available
+            const storedNumberOfTickets = localStorage.getItem('numberOfTickets');
+            const storedTotalPrice = localStorage.getItem('totalPrice');
+        
+            if (storedNumberOfTickets && storedTotalPrice) {
+                seatCount = parseInt(storedNumberOfTickets, 10);
+                totalPrice();
+            }
+        
+            movieEl.addEventListener('change', function () {
                 ticketPrice = Number(movieEl.value);
                 totalPrice();
             });
-            seatContainerEl.addEventListener(`click`, function (e) {
-                if (e.target.classList.contains(`seat`)) {
-                    if (!e.target.classList.contains(`sold`)) {
-                        e.target.classList.toggle(`selected`);
-                        const selectedSeatEl = document.querySelectorAll(`.row .seat.selected`);
+            seatContainerEl.addEventListener('click', function (e) {
+                if (e.target.classList.contains('seat')) {
+                    if (!e.target.classList.contains('sold')) {
+                        e.target.classList.toggle('selected');
+                        const selectedSeatEl = document.querySelectorAll('.row .seat.selected');
                         seatCount = selectedSeatEl.length;
                         totalPrice();
                     }
